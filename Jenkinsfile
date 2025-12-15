@@ -18,11 +18,11 @@ pipeline {
             steps {
                 sshagent(['ec2-ssh']) {
                     sh '''
-                    ssh -o StrictHostKeyChecking=no ubuntu@18.206.48.232 "sudo rm -rf /var/www/myapp/*"
+                    ssh -o StrictHostKeyChecking=no ubuntu@100.27.233.41 "sudo rm -rf /var/www/myapp/*"
                     
-                    scp -o StrictHostKeyChecking=no -r * ubuntu@18.206.48.2327:/var/www/myapp/
+                    scp -o StrictHostKeyChecking=no -r * ubuntu@100.27.233.41:/var/www/myapp/
 
-                    ssh -o StrictHostKeyChecking=no ubuntu@18.206.48.232 "
+                    ssh -o StrictHostKeyChecking=no ubuntu@100.27.233.41 "
                       cd /var/www/myapp &&
                       npm install &&
                       pm2 restart all || pm2 start app.js
